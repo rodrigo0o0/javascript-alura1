@@ -16,9 +16,22 @@ function adicionaPaciente() {
 
     //criando elemento TR 
 
-    montaTR(paciente);
+    var pacienteEhValido = validaPaciente(paciente);
+    if (pacienteEhValido.length == 0) {
+        var ul = document.querySelector("#mensagens-erro");
+        ul.innerHTML = "";
+        montaTR(paciente);
+        form.reset();
+    } else {
+        var ul = document.querySelector("#mensagens-erro");
+        ul.innerHTML = "";
+        exibeMensagensDeErro(pacienteEhValido);
 
-    form.reset();
+        
+    }
+
+
+    
 
 }
 
@@ -54,6 +67,33 @@ function montaTD(dado, classe) {
     td.classList.add(classe);
     td.textContent = dado;
     return td;
+}
+function validaPaciente(paciente) {
+    var mensagemErro = [];
+    if (validaPeso(paciente.peso)) {
+        mensagemErro.push("Peso Inválido!");
+    }
+    if (validaAltura(paciente.altura)) {
+        mensagemErro.push("Altura Inválida!");
+    }
+    if (paciente.nome.length <= 0) {
+        mensagemErro.push("Nome Inválido!");
+    }
+    if (paciente.gordura <= 0 || paciente.gordura >= 100 || paciente.gordura == "") {
+        mensagemErro.push("Percentual de gordura inválido.");
+    }
+    return mensagemErro;
+    
+}
+function exibeMensagensDeErro(mensagensDeErro = []) {
+    var ul = document.querySelector("#mensagens-erro");
+    mensagensDeErro.forEach(function (texto) {
+        var li = document.createElement("li");
+        li.classList.add("#mensagens-erro");
+        li.textContent = texto;
+        ul.appendChild(li);
+    });
+
 }
 
 console.log("arquivo form.js importado com sucesso.");
