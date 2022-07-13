@@ -18,10 +18,7 @@ function adicionaPaciente() {
 
     var pacienteEhValido = validaPaciente(paciente);
     if (pacienteEhValido.length == 0) {
-        var ul = document.querySelector("#mensagens-erro");
-        ul.innerHTML = "";
-        montaTR(paciente);
-        form.reset();
+        adicionaNaTabela(paciente);
     } else {
         var ul = document.querySelector("#mensagens-erro");
         ul.innerHTML = "";
@@ -34,7 +31,13 @@ function adicionaPaciente() {
     
 
 }
-
+function adicionaNaTabela(paciente) {
+    var ul = document.querySelector("#mensagens-erro");
+    ul.innerHTML = "";
+    montaTR(paciente);
+    var form = document.querySelector("#form-adiciona");
+    form.reset();
+}
 
 function obtemDadosFormulario(form) {
     var paciente = {

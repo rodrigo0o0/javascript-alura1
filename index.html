@@ -20,8 +20,8 @@
 	<main>
 		<section class="container">
 			<h2>Meus pacientes</h2>
-            <label for="filtrar-tabela">Filtre</label>
-            <input type="text" name="filtro" placeholder="digite o nome do paciente" id="filtrar-tabela"/>
+			<label for="filtrar-tabela">Filtre</label>
+			<input type="text" name="filtro" placeholder="digite o nome do paciente" id="filtrar-tabela" />
 			<table>
 				<thead>
 					<tr>
@@ -73,7 +73,8 @@
 					</tr>
 				</tbody>
 			</table>
-
+            <span id="erro-buscar" class="invisivel">Erro ao buscar pacientes</span>
+			<button id="buscar-paciente" class="botao bto-principal">Buscar Paciente</button>
 		</section>
 
 	</main>
@@ -106,5 +107,7 @@
 	<script src="js/form.js"></script>
 	<script src="js/remover-paciente.js"></script>
 	<script src="js/filtra.js"></script>
+	<script src="js/buscar-pacientes.js"></script>
+
 </body>
 </html>
